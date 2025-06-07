@@ -1,3 +1,4 @@
+Capitalize MAC addresses in DHCP Server static assigment table 
 Espressomatic @UnraidForums - 4 Sep 2024
  
 --- a/src/usr/local/www/services_dhcp.php   2024-09-04 18:42:38

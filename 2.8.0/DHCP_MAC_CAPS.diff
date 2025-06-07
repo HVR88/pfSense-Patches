@@ -1,0 +1,20 @@
+
+Capitalize MAC addresses in DHCP Server static assigment table 
+for pfSense 2.8.0
+
+Espressomatic @UnraidForums - 7 June 2025
+ 
+--- a/src/usr/local/www/services_dhcp.php   2025-06-07 13:28:47
++++ b/src/usr/local/www/services_dhcp.php   2025-06-07 13:30:47
+@@ -1936,7 +1936,11 @@
+ 						<?=htmlspecialchars($mapent['hostname'])?>
+ 					</td>
+ 					<td <?php if ($mapent['cid']): ?>style="cursor: help;" data-toggle="popover" data-container="body" data-trigger="hover focus" data-content="<?=gettext('Client ID')?>: <span class=&quot;cid&quot;><?=$mapent['cid']?></span>" data-html="true" data-original-title="<?=gettext('DHCP Client Information')?>"<?php endif; ?>>
++<!-- 
+ 						<?=htmlspecialchars($mapent['mac'])?>
++ -->
++						<?=strtoupper(htmlspecialchars($mapent['mac']))?>
++
+ 					</td>
+ 					<td>
+ 						<?=htmlspecialchars($mapent['descr'])?>

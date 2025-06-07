@@ -1,3 +1,4 @@
+Sort DHCP lease table in ascending IP order, capitalize MAC addresses, reformat MFR string, remove down icon, remove N/A text 
 Espressomatic @UnraidForums - 4 Sep 2024
 
 --- a/src/usr/local/www/status_dhcp_leases.php		2024-09-04 18:42:15

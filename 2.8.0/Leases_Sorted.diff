@@ -1,11 +1,11 @@
 
-Sort DHCP lease table in ascending IP order, capitalize MAC addresses, reformat MFR string, remove down icon, remove N/A text
-pfSense 2.8.0
+Sort DHCP lease table in ascending IP order, capitalize MAC addresses, reformat MFR string, remove down icon, remove N/A text 
+for pfSense 2.8.0
 
 Espressomatic @UnraidForums - 7 June 2025
 
---- a/src/usr/local/www/status_dhcp_leases.php		2025-06-07 12:42:15
-+++ b/src/usr/local/www/status_dhcp_leases.php		2025-06-07 12:43:15
+--- a/src/usr/local/www/status_dhcp_leases.php		2025-06-07 13:31:05
++++ b/src/usr/local/www/status_dhcp_leases.php		2025-06-07 13:33:05
 @@ -131,6 +131,8 @@
  $expired_string = gettext("expired");
  $dynamic_string = gettext("dynamic");
@@ -15,50 +15,44 @@ Espressomatic @UnraidForums - 7 June 2025
  
  if ($_REQUEST['order']) {
  	usort($leases['lease'], function($a, $b) {
-@@ -293,7 +295,9 @@
+@@ -293,7 +295,8 @@
  		}
  	}
  
 -	$mac = $data['mac'];
-+// 	$mac = $data['mac'];
 +	$mac = strtoupper($data['mac']);
 +
  	$mac_hi = strtoupper($mac[0] . $mac[1] . $mac[3] . $mac[4] . $mac[6] . $mac[7]);
  ?>
  				<tr>
-@@ -302,7 +306,13 @@
+@@ -302,7 +305,9 @@
  <?php if ($data['online'] === $online_string): ?>
  						<i class="fa-solid fa-arrow-up text-success online" title="<?=htmlspecialchars($data['online'])?>"></i>
  <?php else: ?>
-+
-+<!-- 
- 						<i class="fa-solid fa-arrow-down online" title="<?=htmlspecialchars($data['online'])?>"></i>
-+ -->
+-						<i class="fa-solid fa-arrow-down online" title="<?=htmlspecialchars($data['online'])?>"></i>
 +
 +						<i class="fa"></i>
 +
  <?php endif; ?>
  					</td>
  					<td><?=htmlspecialchars($data['ip'])?></td>
-@@ -313,7 +323,9 @@
+@@ -313,7 +318,8 @@
  <?php endif; ?>
  						<?=htmlspecialchars($mac)?>
  
 -						<?php if (isset($mac_man[$mac_hi])):?>
-+						<?php //if (isset($mac_man[$mac_hi])):?>
 +						<?php if (isset($mac_man[$mac_hi])):?></br>
 +
  							(<?=htmlspecialchars($mac_man[$mac_hi])?>)
  						<?php endif; ?>
  					</td>
-@@ -327,8 +339,13 @@
+@@ -327,8 +333,10 @@
  						<td><?=htmlspecialchars($data['starts'])?></td>
  						<td><?=htmlspecialchars($data['ends'])?></td>
  					<? else: ?>
-+<!-- 
- 						<td><?=gettext("n/a")?></td>
- 						<td><?=gettext("n/a")?></td>
-+ -->
+-						<td><?=gettext("n/a")?></td>
+-						<td><?=gettext("n/a")?></td>
++
 +						<td><?=gettext(" ")?></td>
 +						<td><?=gettext(" ")?></td>
 +

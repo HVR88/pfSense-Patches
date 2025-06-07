@@ -1,11 +1,5 @@
-
-Sort DHCP lease table in ascending IP order, capitalize MAC addresses, reformat MFR string, remove down icon, remove N/A text 
-for pfSense 2.8.0
-
-Espressomatic @UnraidForums - 7 June 2025
-
---- a/src/usr/local/www/status_dhcp_leases.php		2025-06-07 13:31:05
-+++ b/src/usr/local/www/status_dhcp_leases.php		2025-06-07 13:33:05
+--- a/src/usr/local/www/status_dhcp_leases.php	2025-06-07 13:31:05
++++ b/src/usr/local/www/status_dhcp_leases.php	2025-07-07 13:33:05
 @@ -131,6 +131,8 @@
  $expired_string = gettext("expired");
  $dynamic_string = gettext("dynamic");
